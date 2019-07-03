@@ -108,10 +108,17 @@ App = {
             } else {
                 $('#taskList').append($newTaskTemplate);
             }
-        }
 
-        // show the task
-        $taskTemplate.show();
+            // show the task
+            $newTaskTemplate.show();
+        }
+    },
+
+    createTask: async () => {
+        App.setLoading(true);
+        const content = $('#newTask').val();
+        await App.todoList.createTask(content);
+        window.location.reload();
     },
 
     setLoading: (boolean) => {
